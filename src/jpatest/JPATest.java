@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package jpatest;
+import Modelos.ModeloTablaUsuario;
 import javax.persistence.*;
 import persistence.Usuario;
 import controladores.UsuarioJpaController;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +49,16 @@ public class JPATest {
         }
         
         List<Usuario> usuarios;
+        
         usuarios=contoladorUsuario.findUsuarioEntities();
+        ModeloTablaUsuario mtabla=new ModeloTablaUsuario(usuarios);
+        Principal p= new Principal(mtabla);;
+        p.setVisible(true);
+        /*Query q;
+        q=em.createNamedQuery("Usuario.findNombreLike");
+        //'nombre' es el parametro que esta en la clase usuario ':nombre'
+        q.setParameter("nombre", "F%");
+        usuarios=q.getResultList();*/
         for(Usuario u:usuarios){
             System.out.println(u);
         }

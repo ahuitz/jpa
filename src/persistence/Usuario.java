@@ -14,6 +14,11 @@ import javax.persistence.*;
 //@ acciones que se van a ejecutar antes, de acuerdo al tipo de comentario
 
 @Entity// tratar a la clase como una entidad
+//inicializa una clase
+@NamedQueries({
+    @NamedQuery(name="Usuario.findNombreLike",query="Select u from Usuario u where u.nombre LIKE :nombre")
+})
+
 public class Usuario implements Serializable{
     @Id//notacion que indica que se debe tratar como identificador de la tabla
     private int id;
